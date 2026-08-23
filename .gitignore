@@ -1,3 +1,11 @@
+# Node & Frontend Build Artifacts
+node_modules/
+dist/
+dist-ssr/
+*.local
+frontend/node_modules/
+frontend/dist/
+
 # Virtual Environments
 venv/
 env/
@@ -7,6 +15,7 @@ ENV/
 __pycache__/
 *.py[cod]
 *$py.class
+*.pytest_cache/
 
 # Database & Storage
 *.db
