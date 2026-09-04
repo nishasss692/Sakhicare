@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, ShieldCheck, Zap, Activity, Award } from 'lucide-react';
+import { ShieldCheck, Activity, Award, Stethoscope } from 'lucide-react';
 
 export default function Hero({ onStartAssessment }) {
   return (
@@ -9,8 +9,8 @@ export default function Hero({ onStartAssessment }) {
           {/* Left Hero Content */}
           <div>
             <div className="hero-badge">
-              <Sparkles size={16} />
-              <span>AI-Powered Non-Invasive Clinical Screening</span>
+              <ShieldCheck size={16} />
+              <span>Evidence-Based Clinical Risk Screening</span>
             </div>
 
             <h1 className="hero-title">
@@ -18,7 +18,7 @@ export default function Hero({ onStartAssessment }) {
             </h1>
 
             <p className="hero-subtitle">
-              Early detection and personalized risk assessment for Polycystic Ovary Syndrome (PCOS) using advanced machine learning on 13 key physiological and lifestyle markers.
+              Early detection and personalized risk evaluation for Polycystic Ovary Syndrome (PCOS) based on 13 key physiological and lifestyle markers.
             </p>
 
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
@@ -76,7 +76,7 @@ export default function Hero({ onStartAssessment }) {
 
               <div className="feature-pill">
                 <div className="feature-pill-icon" style={{ background: '#EDE9FE', color: '#7C3AED' }}>
-                  <Zap size={22} />
+                  <Stethoscope size={22} />
                 </div>
                 <div>
                   <h4 style={{ fontSize: '0.925rem', marginBottom: '2px' }}>Personalized Action Plan</h4>

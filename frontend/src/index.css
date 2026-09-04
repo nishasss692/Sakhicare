@@ -32,8 +32,8 @@
   --bg-surface: #FFFFFF;
   --bg-glass: rgba(255, 255, 255, 0.85);
   --bg-glass-card: rgba(255, 255, 255, 0.92);
-  --bg-gradient-hero: linear-gradient(135deg, #FFF0F5 0%, #FAF5FF 50%, #F0FDFA 100%);
-  --bg-gradient-primary: linear-gradient(135deg, #E11D48 0%, #C026D3 100%);
+  --bg-gradient-hero: linear-gradient(180deg, #FFF1F5 0%, #FAF8F6 100%);
+  --bg-gradient-primary: linear-gradient(135deg, #D94676 0%, #B82555 100%);
 
   /* Text Colors */
   --text-main: #1F2937;
@@ -42,12 +42,12 @@
   --text-subtle: #9CA3AF;
 
   /* Borders & Shadows */
-  --border-subtle: #F3E8EE;
-  --border-medium: #E5E7EB;
+  --border-subtle: #F0E8ED;
+  --border-medium: #E2E8F0;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 25px -5px rgba(217, 70, 118, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-  --shadow-xl: 0 20px 35px -8px rgba(217, 70, 118, 0.15), 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 8px 16px -4px rgba(0, 0, 0, 0.06), 0 3px 6px -2px rgba(0, 0, 0, 0.03);
+  --shadow-xl: 0 14px 24px -6px rgba(0, 0, 0, 0.07), 0 6px 10px -3px rgba(0, 0, 0, 0.03);
 
   /* Radii */
   --radius-sm: 8px;

@@ -7,7 +7,7 @@ import HistoryDashboard from './components/HistoryDashboard';
 import LearnPCOS from './components/LearnPCOS';
 import AuthModal from './components/AuthModal';
 import { api } from './services/api';
-import { Heart, Shield, Info, AlertTriangle } from 'lucide-react';
+import { Heart, AlertTriangle } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('assessment');
@@ -178,7 +178,7 @@ export default function App() {
               <span>SakhiCare</span>
             </div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-              AI-Powered Non-Invasive PCOS Risk Screening & Reproductive Health Companion
+              Evidence-Based PCOS Risk Screening & Reproductive Health Companion
             </p>
           </div>
 
@@ -191,11 +191,11 @@ export default function App() {
             color: 'var(--text-muted)',
             lineHeight: '1.5'
           }}>
-            <strong>Medical Disclaimer:</strong> SakhiCare is an AI screening and educational tool designed to assist with early risk awareness. It does not provide medical diagnoses or replace professional medical consultation, diagnostic pelvic ultrasound, or certified clinical laboratory testing.
+            <strong>Medical Disclaimer:</strong> SakhiCare is a non-invasive screening and educational tool designed to assist with early risk awareness. It does not provide medical diagnoses or replace professional medical consultation, diagnostic pelvic ultrasound, or certified clinical laboratory testing.
           </div>
 
           <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '0.8rem', color: 'var(--text-subtle)' }}>
-            © {new Date().getFullYear()} SakhiCare. Built with React, Vite & FastAPI Random Forest ML Classifier.
+            © {new Date().getFullYear()} SakhiCare. Evidence-based reproductive health screening and patient empowerment.
           </div>
         </div>
       </footer>

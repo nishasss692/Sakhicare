@@ -2,7 +2,8 @@ import React, { useState, useMemo } from 'react';
 import { 
   User, 
   Calendar, 
-  Sparkles, 
+  ShieldCheck,
+  ClipboardCheck, 
   Activity, 
   ArrowRight, 
   ArrowLeft, 
@@ -489,7 +490,7 @@ export default function AssessmentWizard({ onSubmit, isLoading, onAuthRequired, 
                       gap: '12px',
                       marginTop: '8px'
                     }}>
-                      <Sparkles size={20} color="var(--primary)" />
+                      <ShieldCheck size={20} color="var(--primary)" />
                       <span style={{ fontSize: '0.875rem', color: 'var(--text-heading)' }}>
                         <strong>Note:</strong> You will be prompted to quickly sign in or register to securely save your clinical assessment results.
                       </span>
@@ -532,8 +533,8 @@ export default function AssessmentWizard({ onSubmit, isLoading, onAuthRequired, 
                     <span>Analyzing Markers...</span>
                   ) : (
                     <>
-                      <Sparkles size={20} />
-                      <span>Get AI Prediction</span>
+                      <ClipboardCheck size={20} />
+                      <span>Calculate Risk Score</span>
                     </>
                   )}
                 </button>

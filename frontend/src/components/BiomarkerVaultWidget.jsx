@@ -1,16 +1,10 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   FlaskConical, 
   Activity, 
-  Sparkles, 
-  AlertCircle, 
-  CheckCircle2, 
   Calculator, 
-  Info, 
   Save, 
-  RotateCcw,
-  ShieldAlert,
-  HelpCircle
+  RotateCcw
 } from 'lucide-react';
 
 const DEFAULT_LABS = {
@@ -320,7 +314,7 @@ export default function BiomarkerVaultWidget() {
 
       {/* Clinical Guidance Box */}
       <div className="bio-guidance-box">
-        <Sparkles size={20} color="#0D9488" />
+        <Activity size={20} color="#0D9488" />
         <div className="guidance-content">
           <h6>Why Tracking Biomarkers Matters in PCOS</h6>
           <p>

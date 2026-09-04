@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import confetti from 'canvas-confetti';
+import React from 'react';
 import { 
   CheckCircle2, 
   AlertTriangle, 
@@ -8,24 +7,12 @@ import {
   RotateCcw, 
   HeartHandshake, 
   Stethoscope, 
-  HelpCircle,
-  Activity,
-  History
+  Activity, 
+  History 
 } from 'lucide-react';
 
 export default function ResultCard({ result, onRetake, onGoToHistory }) {
   const { risk_score, risk_level, pcos_detected, recommendation, contributing_factors } = result;
-
-  // Trigger confetti for Low Risk / Healthy scores
-  useEffect(() => {
-    if (risk_level === 'Low Risk') {
-      confetti({
-        particleCount: 80,
-        spread: 60,
-        origin: { y: 0.6 }
-      });
-    }
-  }, [risk_level]);
 
   // Circumference for 190px radial gauge (radius = 76)
   const radius = 76;
@@ -94,7 +81,7 @@ export default function ResultCard({ result, onRetake, onGoToHistory }) {
               {pcos_detected ? 'Indicators of PCOS Detected' : 'Low Clinical PCOS Risk'}
             </h2>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '520px', margin: '4px auto 0 auto' }}>
-              Based on the Random Forest machine learning model evaluated on your non-invasive physical & lifestyle markers.
+              Evaluated against 13 key physiological and hormonal markers based on clinical screening parameters.
             </p>
           </div>
 

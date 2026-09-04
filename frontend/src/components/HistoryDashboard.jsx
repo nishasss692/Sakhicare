@@ -6,42 +6,26 @@ import AssessmentDetailModal from './AssessmentDetailModal';
 import AssessmentComparisonModal from './AssessmentComparisonModal';
 import PrintableDoctorReport from './PrintableDoctorReport';
 
-// 6 New Comprehensive Health Modules
+// Focused Clinical Health Modules
 import CycleCalendarWidget from './CycleCalendarWidget';
-import RiskSimulatorWidget from './RiskSimulatorWidget';
 import BiomarkerVaultWidget from './BiomarkerVaultWidget';
-import HabitTrackerWidget from './HabitTrackerWidget';
-import NutritionGuideWidget from './NutritionGuideWidget';
-import AskSakhiWidget from './AskSakhiWidget';
 
 import { 
   History, 
   Calendar, 
   Activity, 
-  ArrowRight, 
   AlertCircle, 
-  CheckCircle2, 
-  AlertTriangle,
-  Lock,
-  PlusCircle,
-  TrendingDown,
-  TrendingUp,
-  Minus,
-  Sparkles,
-  Scale,
-  Printer,
-  Search,
-  Filter,
-  Eye,
-  SlidersHorizontal,
-  Flame,
+  PlusCircle, 
+  TrendingDown, 
+  TrendingUp, 
+  Minus, 
+  Scale, 
+  Printer, 
+  Search, 
+  Eye, 
   Award,
-  HeartPulse,
-  Trash2,
-  Utensils,
-  FlaskConical,
-  Bot,
-  Zap
+  HeartPulse, 
+  FlaskConical 
 } from 'lucide-react';
 
 const SAMPLE_ASSESSMENTS = [
@@ -280,9 +264,9 @@ export default function HistoryDashboard({ isAuthenticated, onOpenAuth, onStartA
         {useSampleData && (
           <div className="sample-mode-banner">
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Sparkles size={20} color="#D94676" />
+              <Activity size={20} color="#D94676" />
               <div>
-                <strong>Interactive Demo Mode:</strong> Viewing sample clinical progression data showing positive lifestyle response.
+                <strong>Sample Overview Mode:</strong> Viewing sample clinical progression data showing positive lifestyle response.
                 {!isAuthenticated && ' Sign in to track and save your own real screenings.'}
               </div>
             </div>
@@ -352,7 +336,7 @@ export default function HistoryDashboard({ isAuthenticated, onOpenAuth, onStartA
           </div>
         </div>
 
-        {/* Executive Sub-Module Navigation Bar */}
+        {/* Sub-Module Navigation Bar */}
         <div className="dashboard-module-nav">
           <button 
             type="button"
@@ -360,7 +344,7 @@ export default function HistoryDashboard({ isAuthenticated, onOpenAuth, onStartA
             onClick={() => setDashboardTab('overview')}
           >
             <Activity size={17} />
-            <span>Overview & Timeline</span>
+            <span>Overview & Trends</span>
           </button>
           <button 
             type="button"
@@ -372,43 +356,11 @@ export default function HistoryDashboard({ isAuthenticated, onOpenAuth, onStartA
           </button>
           <button 
             type="button"
-            className={`module-nav-item ${dashboardTab === 'simulator' ? 'active' : ''}`}
-            onClick={() => setDashboardTab('simulator')}
-          >
-            <Zap size={17} />
-            <span>"What-If" Simulator</span>
-          </button>
-          <button 
-            type="button"
             className={`module-nav-item ${dashboardTab === 'biomarkers' ? 'active' : ''}`}
             onClick={() => setDashboardTab('biomarkers')}
           >
             <FlaskConical size={17} />
-            <span>Biomarker Vault</span>
-          </button>
-          <button 
-            type="button"
-            className={`module-nav-item ${dashboardTab === 'nutrition' ? 'active' : ''}`}
-            onClick={() => setDashboardTab('nutrition')}
-          >
-            <Utensils size={17} />
-            <span>Nutrition & Plate</span>
-          </button>
-          <button 
-            type="button"
-            className={`module-nav-item ${dashboardTab === 'habits' ? 'active' : ''}`}
-            onClick={() => setDashboardTab('habits')}
-          >
-            <Flame size={17} />
-            <span>Daily Habits & Streaks</span>
-          </button>
-          <button 
-            type="button"
-            className={`module-nav-item ${dashboardTab === 'ask' ? 'active' : ''}`}
-            onClick={() => setDashboardTab('ask')}
-          >
-            <Bot size={17} />
-            <span>Ask Sakhi AI</span>
+            <span>Biomarker Reference</span>
           </button>
         </div>
 
@@ -559,7 +511,7 @@ export default function HistoryDashboard({ isAuthenticated, onOpenAuth, onStartA
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                   <div>
                     <h3 style={{ fontSize: '1.15rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <Flame size={20} color="var(--primary)" />
+                      <HeartPulse size={20} color="var(--primary)" />
                       Aggregate Symptom Driver Profile
                     </h3>
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.825rem', marginTop: '2px' }}>
@@ -745,31 +697,9 @@ export default function HistoryDashboard({ isAuthenticated, onOpenAuth, onStartA
           />
         )}
 
-        {/* TAB 3: "What-If" Risk Simulator */}
-        {dashboardTab === 'simulator' && (
-          <RiskSimulatorWidget 
-            latestAssessment={kpiData?.latest || (activeHistory.length > 0 ? activeHistory[0] : null)} 
-          />
-        )}
-
-        {/* TAB 4: Clinical Biomarker Vault */}
+        {/* TAB 3: Clinical Biomarker Reference */}
         {dashboardTab === 'biomarkers' && (
           <BiomarkerVaultWidget />
-        )}
-
-        {/* TAB 5: Anti-Inflammatory Nutrition Guide */}
-        {dashboardTab === 'nutrition' && (
-          <NutritionGuideWidget />
-        )}
-
-        {/* TAB 6: Daily Habits & Streaks Tracker */}
-        {dashboardTab === 'habits' && (
-          <HabitTrackerWidget />
-        )}
-
-        {/* TAB 7: Ask Sakhi AI Companion */}
-        {dashboardTab === 'ask' && (
-          <AskSakhiWidget />
         )}
 
         {/* Empty State when no history and not in demo mode (Overview tab only) */}
@@ -778,7 +708,7 @@ export default function HistoryDashboard({ isAuthenticated, onOpenAuth, onStartA
             <History size={48} color="var(--text-subtle)" style={{ margin: '0 auto 16px auto' }} />
             <h3 style={{ fontSize: '1.25rem', marginBottom: '6px' }}>No Screening Records Yet</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '440px', margin: '0 auto 24px auto' }}>
-              Take your first AI screening or activate demo preview mode to see full progression analytics.
+              Complete your first screening or activate sample data to see progression analytics and reports.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
               <button className="btn btn-primary" onClick={onStartAssessment}>
@@ -786,7 +716,7 @@ export default function HistoryDashboard({ isAuthenticated, onOpenAuth, onStartA
                 <span>Take First Screening</span>
               </button>
               <button className="btn btn-secondary" onClick={() => setUseSampleData(true)}>
-                <Sparkles size={18} />
+                <Activity size={18} />
                 <span>Preview with Sample Data</span>
               </button>
             </div>

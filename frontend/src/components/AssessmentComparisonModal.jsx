@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { X, ArrowRight, TrendingDown, TrendingUp, Minus, CheckCircle2, AlertCircle, Sparkles, Scale } from 'lucide-react';
+import { X, ArrowRight, TrendingDown, TrendingUp, Minus, Scale } from 'lucide-react';
 
 export default function AssessmentComparisonModal({ history = [], onClose }) {
-  if (!history || history.length < 2) return null;
-
   // Defaults: newest (index 0) vs second newest (index 1)
   const [selectedIdA, setSelectedIdA] = useState(history[0]?.id);
   const [selectedIdB, setSelectedIdB] = useState(history[1]?.id);
+
+  if (!history || history.length < 2) return null;
 
   const itemA = history.find(h => h.id === Number(selectedIdA)) || history[0];
   const itemB = history.find(h => h.id === Number(selectedIdB)) || history[1];
