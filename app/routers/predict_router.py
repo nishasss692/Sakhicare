@@ -192,3 +192,22 @@ def get_assessment_by_id(
     if not assessment:
         raise HTTPException(status_code=404, detail="Assessment record not found")
     return assessment
+
+@router.delete("/assessments/{assessment_id}")
+def delete_assessment_by_id(
+    assessment_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """
+    Delete a specific assessment record owned by the authenticated user.
+    """
+    assessment = db.query(RiskAssessment).filter(
+        RiskAssessment.id == assessment_id,
+        RiskAssessment.user_id == current_user.id
+    ).first()
+    if not assessment:
+        raise HTTPException(status_code=404, detail="Assessment record not found")
+    db.delete(assessment)
+    db.commit()
+    return {"message": "Assessment record successfully deleted", "id": assessment_id}

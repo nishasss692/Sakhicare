@@ -104,6 +104,18 @@ export const api = {
     return data;
   },
 
+  async deleteAssessment(id) {
+    const res = await fetch(`${API_BASE}/api/assessments/${id}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders()
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.detail || 'Failed to delete assessment record');
+    }
+    return data;
+  },
+
   async healthCheck() {
     try {
       const res = await fetch(`${API_BASE}/health`);
