@@ -5,6 +5,15 @@ import HormonePhaseWidget from './HormonePhaseWidget';
 import AssessmentDetailModal from './AssessmentDetailModal';
 import AssessmentComparisonModal from './AssessmentComparisonModal';
 import PrintableDoctorReport from './PrintableDoctorReport';
+
+// 6 New Comprehensive Health Modules
+import CycleCalendarWidget from './CycleCalendarWidget';
+import RiskSimulatorWidget from './RiskSimulatorWidget';
+import BiomarkerVaultWidget from './BiomarkerVaultWidget';
+import HabitTrackerWidget from './HabitTrackerWidget';
+import NutritionGuideWidget from './NutritionGuideWidget';
+import AskSakhiWidget from './AskSakhiWidget';
+
 import { 
   History, 
   Calendar, 
@@ -28,7 +37,11 @@ import {
   Flame,
   Award,
   HeartPulse,
-  Trash2
+  Trash2,
+  Utensils,
+  FlaskConical,
+  Bot,
+  Zap
 } from 'lucide-react';
 
 const SAMPLE_ASSESSMENTS = [
@@ -129,6 +142,10 @@ export default function HistoryDashboard({ isAuthenticated, onOpenAuth, onStartA
   const [selectedDetail, setSelectedDetail] = useState(null);
   const [showComparison, setShowComparison] = useState(false);
   const [selectedForReport, setSelectedForReport] = useState(null);
+
+  // Active Dashboard Sub-Module Tab
+  // 'overview' | 'calendar' | 'simulator' | 'biomarkers' | 'nutrition' | 'habits' | 'ask'
+  const [dashboardTab, setDashboardTab] = useState('overview');
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -335,6 +352,66 @@ export default function HistoryDashboard({ isAuthenticated, onOpenAuth, onStartA
           </div>
         </div>
 
+        {/* Executive Sub-Module Navigation Bar */}
+        <div className="dashboard-module-nav">
+          <button 
+            type="button"
+            className={`module-nav-item ${dashboardTab === 'overview' ? 'active' : ''}`}
+            onClick={() => setDashboardTab('overview')}
+          >
+            <Activity size={17} />
+            <span>Overview & Timeline</span>
+          </button>
+          <button 
+            type="button"
+            className={`module-nav-item ${dashboardTab === 'calendar' ? 'active' : ''}`}
+            onClick={() => setDashboardTab('calendar')}
+          >
+            <Calendar size={17} />
+            <span>Cycle & Symptoms</span>
+          </button>
+          <button 
+            type="button"
+            className={`module-nav-item ${dashboardTab === 'simulator' ? 'active' : ''}`}
+            onClick={() => setDashboardTab('simulator')}
+          >
+            <Zap size={17} />
+            <span>"What-If" Simulator</span>
+          </button>
+          <button 
+            type="button"
+            className={`module-nav-item ${dashboardTab === 'biomarkers' ? 'active' : ''}`}
+            onClick={() => setDashboardTab('biomarkers')}
+          >
+            <FlaskConical size={17} />
+            <span>Biomarker Vault</span>
+          </button>
+          <button 
+            type="button"
+            className={`module-nav-item ${dashboardTab === 'nutrition' ? 'active' : ''}`}
+            onClick={() => setDashboardTab('nutrition')}
+          >
+            <Utensils size={17} />
+            <span>Nutrition & Plate</span>
+          </button>
+          <button 
+            type="button"
+            className={`module-nav-item ${dashboardTab === 'habits' ? 'active' : ''}`}
+            onClick={() => setDashboardTab('habits')}
+          >
+            <Flame size={17} />
+            <span>Daily Habits & Streaks</span>
+          </button>
+          <button 
+            type="button"
+            className={`module-nav-item ${dashboardTab === 'ask' ? 'active' : ''}`}
+            onClick={() => setDashboardTab('ask')}
+          >
+            <Bot size={17} />
+            <span>Ask Sakhi AI</span>
+          </button>
+        </div>
+
         {/* Loading Spinner */}
         {isLoading && (
           <div style={{ textAlign: 'center', padding: '64px 0', color: 'var(--text-muted)' }}>
@@ -351,7 +428,7 @@ export default function HistoryDashboard({ isAuthenticated, onOpenAuth, onStartA
           </div>
         )}
 
-        {!isLoading && kpiData && (
+        {dashboardTab === 'overview' && !isLoading && kpiData && (
           <>
             {/* Executive Health KPI Summary Matrix */}
             <div className="kpi-matrix-grid">
@@ -661,8 +738,42 @@ export default function HistoryDashboard({ isAuthenticated, onOpenAuth, onStartA
           </>
         )}
 
-        {/* Empty State when no history and not in demo mode */}
-        {!isLoading && !error && history.length === 0 && !useSampleData && (
+        {/* TAB 2: Cycle & Symptom Calendar */}
+        {dashboardTab === 'calendar' && (
+          <CycleCalendarWidget 
+            userCycleLength={kpiData?.latest?.cycle_length || 28} 
+          />
+        )}
+
+        {/* TAB 3: "What-If" Risk Simulator */}
+        {dashboardTab === 'simulator' && (
+          <RiskSimulatorWidget 
+            latestAssessment={kpiData?.latest || (activeHistory.length > 0 ? activeHistory[0] : null)} 
+          />
+        )}
+
+        {/* TAB 4: Clinical Biomarker Vault */}
+        {dashboardTab === 'biomarkers' && (
+          <BiomarkerVaultWidget />
+        )}
+
+        {/* TAB 5: Anti-Inflammatory Nutrition Guide */}
+        {dashboardTab === 'nutrition' && (
+          <NutritionGuideWidget />
+        )}
+
+        {/* TAB 6: Daily Habits & Streaks Tracker */}
+        {dashboardTab === 'habits' && (
+          <HabitTrackerWidget />
+        )}
+
+        {/* TAB 7: Ask Sakhi AI Companion */}
+        {dashboardTab === 'ask' && (
+          <AskSakhiWidget />
+        )}
+
+        {/* Empty State when no history and not in demo mode (Overview tab only) */}
+        {dashboardTab === 'overview' && !isLoading && !error && history.length === 0 && !useSampleData && (
           <div className="empty-history-full-card">
             <History size={48} color="var(--text-subtle)" style={{ margin: '0 auto 16px auto' }} />
             <h3 style={{ fontSize: '1.25rem', marginBottom: '6px' }}>No Screening Records Yet</h3>
