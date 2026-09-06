@@ -88,13 +88,9 @@ export default function App() {
 
   return (
     <div className="app-layout" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      {/* Top Navigation Bar with Three-Bars Hamburger Menu */}
+      {/* Corner Navigation: Three-Bars Hamburger & SakhiCare */}
       <Navbar 
-        activeTab={activeTab}
         setActiveTab={handleTabChange}
-        user={user}
-        onOpenAuth={handleOpenAuth}
-        onLogout={handleLogout}
         onToggleSidebar={() => setIsSidebarOpen(prev => !prev)}
         isSidebarOpen={isSidebarOpen}
       />

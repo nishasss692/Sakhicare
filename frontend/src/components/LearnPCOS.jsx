@@ -12,7 +12,7 @@ import {
 
 export default function LearnPCOS({ onStartAssessment }) {
   return (
-    <div className="container" style={{ padding: '48px 24px 80px 24px' }}>
+    <div className="container" style={{ padding: '80px 24px 80px 24px' }}>
       {/* Header */}
       <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 48px auto' }}>
         <div className="hero-badge">
