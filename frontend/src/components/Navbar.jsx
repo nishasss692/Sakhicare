@@ -1,20 +1,43 @@
 import React from 'react';
 import { Heart, Activity, History, BookOpen, LogIn, LogOut, User as UserIcon } from 'lucide-react';
 
-export default function Navbar({ activeTab, setActiveTab, user, onOpenAuth, onLogout }) {
+export default function Navbar({ 
+  activeTab, 
+  setActiveTab, 
+  user, 
+  onOpenAuth, 
+  onLogout,
+  onToggleSidebar,
+  isSidebarOpen 
+}) {
   return (
     <header className="navbar">
       <div className="container nav-container">
-        {/* Brand Logo */}
-        <div className="brand-logo" onClick={() => setActiveTab('assessment')}>
-          <div className="brand-icon-wrapper">
-            <Heart size={22} fill="white" strokeWidth={0} />
+        {/* Brand & Hamburger Section */}
+        <div className="nav-brand-section">
+          {/* Three Bars Hamburger Button to access sidebar */}
+          <button 
+            className={`hamburger-btn ${isSidebarOpen ? 'active' : ''}`}
+            onClick={onToggleSidebar}
+            aria-label={isSidebarOpen ? "Close navigation menu" : "Open navigation menu"}
+            title="Access navigation sidebar"
+          >
+            <span className="hamburger-bar bar-1"></span>
+            <span className="hamburger-bar bar-2"></span>
+            <span className="hamburger-bar bar-3"></span>
+          </button>
+
+          {/* Brand Logo */}
+          <div className="brand-logo" onClick={() => setActiveTab('assessment')}>
+            <div className="brand-icon-wrapper">
+              <Heart size={22} fill="white" strokeWidth={0} />
+            </div>
+            <span>SakhiCare</span>
           </div>
-          <span>SakhiCare</span>
         </div>
 
         {/* Navigation Tabs */}
-        <nav>
+        <nav className="desktop-nav">
           <ul className="nav-links">
             <li>
               <button 
@@ -85,3 +108,4 @@ export default function Navbar({ activeTab, setActiveTab, user, onOpenAuth, onLo
     </header>
   );
 }
+
