@@ -6,7 +6,6 @@ import {
   BookOpen, 
   Bot, 
   Utensils, 
-  Sliders, 
   CalendarCheck, 
   X, 
   ChevronRight, 
@@ -71,15 +70,6 @@ export default function Sidebar({
           color: '#D94676',
           bg: '#FDF2F8',
           badge: 'Trends'
-        },
-        {
-          id: 'simulator',
-          label: 'Risk Simulator',
-          description: 'Interactive "What-If" modeling',
-          icon: Sliders,
-          color: '#0284C7',
-          bg: '#F0F9FF',
-          badge: 'Interactive'
         }
       ]
     },
